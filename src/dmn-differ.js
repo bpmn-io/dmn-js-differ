@@ -16,7 +16,7 @@ class DmnDiffer {
    * Compute the differences between two DMN XMLs.
    * @param {string} oldXML - The old DMN XML as a string.
    * @param {string} newXML - The new DMN XML as a string.
-   * @returns {Promise<Object>} - A promise that resolves with the diff object (keys: added, modified, removed, values: list of added/modified/removed items)
+   * @returns {Promise<Object>} - A promise that resolves with the diff object (keys: IDs of DRD elements that changed, values: objects with the type of changes (changeType) and changes list (changes))
    */
   async compute(oldXML, newXML) {
     const oldDefinitions = await this._parseXML(oldXML);
