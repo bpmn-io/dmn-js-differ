@@ -30,6 +30,12 @@ class DmnDiffer {
     const classified = classifyChanges(delta, oldDefinitions, newDefinitions);
     const grouped = groupChanges(classified, oldDefinitions, newDefinitions);
 
+    console.log("old", oldDefinitions);
+    console.log("new", newDefinitions);
+    console.log("delta", delta);
+    console.log("classified", classified);
+    console.log("grouped", grouped);
+
     return grouped;
   }
 
