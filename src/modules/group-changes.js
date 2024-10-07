@@ -57,8 +57,8 @@ const _extractPathUntilTarget = (path, target) => {
 };
 
 const _getValueFromPath = (definitions, path) => {
-  const keys = path.split(".");
-  return keys.reduce((acc, key) => {
+  const keys = path?.split(".");
+  return keys?.reduce((acc, key) => {
     const index = Number(key);
     return acc ? (isNaN(index) ? acc[key] : acc[index]) : undefined;
   }, definitions);
@@ -73,7 +73,7 @@ const _getDrdElement = (definitions, path) => {
 };
 
 const _getDrdElementId = (definitions, path) => {
-  return _getDrdElement(definitions, path).id;
+  return _getDrdElement(definitions, path)?.id;
 };
 
 const _setDrdElementChangeType = (
