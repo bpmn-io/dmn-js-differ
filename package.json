@@ -8,7 +8,7 @@
     "test": "vitest"
   },
   "author": "Nithin S. Sabu",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "peerDependencies": {
     "camunda-dmn-js": "^2.9.1",
     "dmn-moddle": "^10.0.0",
