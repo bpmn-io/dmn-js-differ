@@ -1,5 +1,5 @@
 import DmnModdle from "dmn-moddle";
-import * as jsondiffpatch from "jsondiffpatch";
+import { DiffPatcher } from "diffpatch";
 
 import classifyChanges from "./modules/classify-changes";
 import groupChanges from "./modules/group-changes";
@@ -7,7 +7,7 @@ import groupChanges from "./modules/group-changes";
 class DmnDiffer {
   constructor() {
     this.moddle = new DmnModdle();
-    this.diffpatcher = jsondiffpatch.create({
+    this.diffpatcher = new DiffPatcher({
       objectHash: (obj) => obj.id || JSON.stringify(obj),
     });
   }

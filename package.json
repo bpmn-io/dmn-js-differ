@@ -11,13 +11,15 @@
   "license": "MIT",
   "peerDependencies": {
     "camunda-dmn-js": "^2.9.1",
-    "dmn-moddle": "^10.0.0",
-    "jsondiffpatch": "^0.6.0"
+    "dmn-moddle": "^10.0.0"
   },
   "devDependencies": {
     "rollup": "^4.24.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "vite-raw-plugin": "^1.0.2",
     "vitest": "^2.1.2"
+  },
+  "dependencies": {
+    "diffpatch": "^0.6.0"
   }
 }

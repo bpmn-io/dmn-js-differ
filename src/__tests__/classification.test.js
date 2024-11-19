@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest";
 import DmnModdle from "dmn-moddle";
-import * as jsondiffpatch from "jsondiffpatch";
+import { DiffPatcher } from "diffpatch";
 
 import dishDecisionV1 from "./fixtures/dish-decision-v1.dmn";
 import dishDecisionV2 from "./fixtures/dish-decision-v2.dmn";
@@ -65,7 +65,7 @@ const removeDi = (definitions) => {
 };
 
 const classify = async (oldXML, newXML) => {
-  const diffpatcher = jsondiffpatch.create({
+  const diffpatcher = new DiffPatcher({
     objectHash: (obj) => obj.id || JSON.stringify(obj),
   });
 
