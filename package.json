@@ -2,24 +2,44 @@
   "name": "dmn-js-differ",
   "version": "0.0.3",
   "description": "A diffing utility for DMN 1.3 documents",
-  "main": "dist/index.js",
   "scripts": {
-    "build-lib": "rollup -c",
-    "test": "vitest"
+    "all": "run-s lint build test",
+    "lint": "echo 'not configured'",
+    "build": "rollup -c",
+    "test": "vitest run"
   },
+  "main": "./dist/index.cjs",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "import": "./dist/index.esm.js",
+      "node": "./dist/index.cjs"
+    }
+  },
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bpmn-io/dmn-js-differ"
+  },
+  "keywords": [
+    "bpmn",
+    "diff"
+  ],
   "author": "Nithin S. Sabu",
   "license": "MIT",
-  "peerDependencies": {
-    "camunda-dmn-js": "^2.9.1",
-    "dmn-moddle": "^10.0.0"
-  },
   "devDependencies": {
+    "npm-run-all2": "^7.0.1",
     "rollup": "^4.24.0",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
     "vite-raw-plugin": "^1.0.2",
     "vitest": "^2.1.2"
   },
   "dependencies": {
     "diffpatch": "^0.6.0"
-  }
+  },
+  "peerDependencies": {
+    "dmn-moddle": "^10.0.0"
+  },
+  "files": [
+    "dist"
+  ]
 }
