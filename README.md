@@ -1,5 +1,7 @@
 # dmn-js-differ
 
+[![CI](https://github.com/bpmn-io/dmn-js-differ/actions/workflows/CI.yml/badge.svg)](https://github.com/bpmn-io/dmn-js-differ/actions/workflows/CI.yml)
+
 A semantic diffing utility for DMN 1.3 documents.
 
 ## Usage
