@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="Definitions_0cx0vqk" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.27.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.5.0">
+  <decision id="Decision_1ukmnt4" name="Decide on upgrade">
+    <informationRequirement id="InformationRequirement_065xv2q">
+      <requiredInput href="#InputData_1lse6r4" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_14xm9v3">
+      <requiredDecision href="#Decision_1loqm2b" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_18tk2si" hitPolicy="FIRST">
+      <input id="Input_1" label="Engagement score">
+        <inputExpression id="InputExpression_1" typeRef="number">
+          <text>CalculateEngagementScore</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0xim9r0" label="User Status">
+        <inputExpression id="LiteralExpression_014c3d9" typeRef="string">
+          <text></text>
+        </inputExpression>
+        <inputValues id="UnaryTests_1a5xgq2">
+          <text>"VIP","Regular"</text>
+        </inputValues>
+      </input>
+      <output id="Output_1" label="isEligible" name="eligibleForUpgrade" typeRef="boolean" />
+      <rule id="DecisionRule_0isgy03">
+        <inputEntry id="UnaryTests_0d9szy0">
+          <text>&gt;= 30</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0kqwra8">
+          <text>"VIP"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1toqt6o">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_1lse6r4" name="Students">
+    <description>Student description</description>
+  </inputData>
+  <decision id="Decision_1loqm2b" name="Decide if under 18">
+    <variable id="InformationItem_1u2we5r" name="isUnder18" typeRef="boolean" />
+    <literalExpression id="LiteralExpression_0h39fr6">
+      <text>years and months duration(date(user_dob), last day of month(date)())</text>
+    </literalExpression>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="Decision_1ukmnt4">
+        <dc:Bounds height="80" width="180" x="240" y="230" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0xg9zk8" dmnElementRef="InputData_1lse6r4">
+        <dc:Bounds height="45" width="125" x="117" y="87" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0fhe6r5" dmnElementRef="InformationRequirement_065xv2q">
+        <di:waypoint x="180" y="132" />
+        <di:waypoint x="300" y="210" />
+        <di:waypoint x="300" y="230" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_1cd3333" dmnElementRef="InformationRequirement_14xm9v3">
+        <di:waypoint x="590" y="150" />
+        <di:waypoint x="360" y="210" />
+        <di:waypoint x="360" y="230" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0j3ef6w" dmnElementRef="Decision_1loqm2b">
+        <dc:Bounds height="80" width="180" x="500" y="70" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
