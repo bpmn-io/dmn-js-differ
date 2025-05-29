@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0cx0vqk" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.27.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.5.0">
+  <decision id="Decision_1ukmnt4" name="Decide on upgrade">
+    <decisionTable id="DecisionTable_18tk2si" hitPolicy="FIRST">
+      <input id="Input_1" label="Engagement score">
+        <inputExpression id="InputExpression_1" typeRef="number">
+          <text>CalculateEngagementScore</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0xim9r0" label="User Status">
+        <inputExpression id="LiteralExpression_014c3d9" typeRef="string">
+          <text></text>
+        </inputExpression>
+        <inputValues id="UnaryTests_1a5xgq2">
+          <text>"VIP","Regular"</text>
+        </inputValues>
+      </input>
+      <output id="Output_1" label="isEligible" name="eligibleForUpgrade" typeRef="boolean" />
+      <rule id="DecisionRule_0isgy03">
+        <inputEntry id="UnaryTests_0d9szy0">
+          <text>&gt;= 25</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0kqwra8">
+          <text>"VIP"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1toqt6o">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="Decision_1ukmnt4">
+        <dc:Bounds height="80" width="180" x="160" y="100" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
