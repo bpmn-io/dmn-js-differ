@@ -18,6 +18,8 @@ import bkmAdditionOld from "./fixtures/drd/bkm-addition-old.dmn";
 import bkmAdditionNew from "./fixtures/drd/bkm-addition-new.dmn";
 import bkmModificationOld from "./fixtures/drd/bkm-modification-old.dmn";
 import bkmModificationNew from "./fixtures/drd/bkm-modification-new.dmn";
+import bkmTypeChangeOld from "./fixtures/drd/bkm-type-change-old.dmn";
+import bkmTypeChangeNew from "./fixtures/drd/bkm-type-change-new.dmn";
 import ksAdditionOld from "./fixtures/drd/ks-addition-old.dmn";
 import ksAdditionNew from "./fixtures/drd/ks-addition-new.dmn";
 import ksModificationOld from "./fixtures/drd/ks-modification-old.dmn";
@@ -509,6 +511,44 @@ describe("DRD view", () => {
                   id: "BusinessKnowledgeModel_0m5x0lw",
                 },
                 value: "isUnder18",
+              },
+            ],
+          },
+        },
+      });
+    });
+
+    test("should detect change to literal expression", async () => {
+      const result = await computeDiff(bkmTypeChangeOld, bkmTypeChangeNew);
+
+      expect(result).toMatchObject({
+        BusinessKnowledgeModel_0m5x0lw: {
+          changeType: "modified",
+          changes: {
+            added: [
+              {
+                location: {
+                  path: "drgElement.3.variable",
+                  id: "InformationItem_0ep2qcs",
+                },
+                value: {
+                  $type: "dmn:InformationItem",
+                  id: "InformationItem_0ep2qcs",
+                },
+              },
+              {
+                location: {
+                  path: "drgElement.3.encapsulatedLogic",
+                  id: "FunctionDefinition_0e5nebi",
+                },
+                value: {
+                  $type: "dmn:FunctionDefinition",
+                  id: "FunctionDefinition_0e5nebi",
+                  body: {
+                    $type: "dmn:LiteralExpression",
+                    id: "LiteralExpression_1xxkcvr",
+                  },
+                },
               },
             ],
           },
