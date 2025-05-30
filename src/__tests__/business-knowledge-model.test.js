@@ -16,7 +16,8 @@ import resultTypeAddOld from "./fixtures/business-knowledge-model/result-type-ad
 import resultTypeAddNew from "./fixtures/business-knowledge-model/result-type-add-new.dmn";
 import resultTypeModificationOld from "./fixtures/business-knowledge-model/result-type-modification-old.dmn";
 import resultTypeModificationNew from "./fixtures/business-knowledge-model/result-type-modification-new.dmn";
-import DmnDiffer from "../dmn-differ";
+
+import { computeDiff } from "./helpers";
 
 describe("Business knowledge model view", () => {
   test("should detect name change", async () => {
@@ -307,8 +308,3 @@ describe("Business knowledge model view", () => {
     });
   });
 });
-
-const computeDiff = async (oldXML, newXML) => {
-  const dmnDiffer = new DmnDiffer();
-  return await dmnDiffer.compute(oldXML, newXML);
-};

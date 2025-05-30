@@ -15,7 +15,7 @@ import expressionAdditionNew from "./fixtures/literal-expression/expression-addi
 import expressionModificationOld from "./fixtures/literal-expression/expression-modification-old.dmn";
 import expressionModificationNew from "./fixtures/literal-expression/expression-modification-new.dmn";
 
-import DmnDiffer from "../dmn-differ";
+import { computeDiff } from "./helpers";
 
 describe("Literal expression view", () => {
   test("should detect name change", async () => {
@@ -250,8 +250,3 @@ describe("Literal expression view", () => {
     });
   });
 });
-
-const computeDiff = async (oldXML, newXML) => {
-  const dmnDiffer = new DmnDiffer();
-  return await dmnDiffer.compute(oldXML, newXML);
-};

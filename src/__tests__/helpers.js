@@ -1,35 +1,6 @@
-export const getAdded = (result) => {
-  return result.added;
-};
+import DmnDiffer from "../dmn-differ";
 
-export const getRemoved = (result) => {
-  return result.removed;
-};
-
-export const getModified = (result) => {
-  return result.modified;
-};
-
-export const getLocation = (change) => {
-  return change.location;
-};
-
-export const getLocationId = (change) => {
-  return getLocation(change).id;
-};
-
-export const getLocationPath = (change) => {
-  return getLocation(change).path;
-};
-
-export const getOldValue = (change) => {
-  return change.oldValue;
-};
-
-export const getNewValue = (change) => {
-  return change.newValue;
-};
-
-export const getValue = (change) => {
-  return change.value;
+export const computeDiff = async (oldXML, newXML) => {
+  const dmnDiffer = new DmnDiffer();
+  return await dmnDiffer.compute(oldXML, newXML);
 };

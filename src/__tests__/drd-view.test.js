@@ -25,7 +25,7 @@ import ksAdditionNew from "./fixtures/drd/ks-addition-new.dmn";
 import ksModificationOld from "./fixtures/drd/ks-modification-old.dmn";
 import ksModificationNew from "./fixtures/drd/ks-modification-new.dmn";
 
-import DmnDiffer from "../dmn-differ";
+import { computeDiff } from "./helpers";
 
 describe("DRD view", () => {
   describe("Input data element", () => {
@@ -677,8 +677,3 @@ describe("DRD view", () => {
     });
   });
 });
-
-const computeDiff = async (oldXML, newXML) => {
-  const dmnDiffer = new DmnDiffer();
-  return await dmnDiffer.compute(oldXML, newXML);
-};
