@@ -39,7 +39,7 @@ import ruleAdditionNew from "./fixtures/decision-table/rule-addition-new.dmn";
 import ruleModificationOld from "./fixtures/decision-table/rule-modification-old.dmn";
 import ruleModificationNew from "./fixtures/decision-table/rule-modification-new.dmn";
 
-import DmnDiffer from "../dmn-differ";
+import { computeDiff } from "./helpers";
 
 describe("Decision table view", () => {
   test("should detect decision name change", async () => {
@@ -739,8 +739,3 @@ describe("Decision table view", () => {
     });
   });
 });
-
-const computeDiff = async (oldXML, newXML) => {
-  const dmnDiffer = new DmnDiffer();
-  return await dmnDiffer.compute(oldXML, newXML);
-};
