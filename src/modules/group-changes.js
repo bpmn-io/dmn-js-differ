@@ -10,14 +10,23 @@ const _groupChanges = (diff, oldDefinitions, newDefinitions) => {
       const { location } = change;
       const { path } = location;
 
-      const drdElementType = _getDrdElementType(path);
-      const drdElementPath = _extractPathUntilTarget(path, drdElementType);
-      const drdElementId = _getDrdElementId(
-        changeType === "removed" ? oldDefinitions : newDefinitions,
-        drdElementPath
-      );
+      if (_isRootLevelChange(path)) {
+        const drdId = newDefinitions.id;
+        _ensureNestedProperty(grouped, drdId, "changes", changeType).push(
+          change
+        );
+      } else {
+        const drdElementType = _getDrdElementType(path);
+        const drdElementPath = _extractPathUntilTarget(path, drdElementType);
+        const drdElementId = _getDrdElementId(
+          changeType === "removed" ? oldDefinitions : newDefinitions,
+          drdElementPath
+        );
 
-      if (drdElementId) {
+        if (!drdElementId) {
+          return;
+        }
+
         // Set changeType
         _setDrdElementChangeType(
           grouped,
@@ -118,4 +127,8 @@ const _ensureNestedProperty = (obj, ...keys) => {
   }, obj);
 
   return array;
+};
+
+const _isRootLevelChange = (path) => {
+  return path.split(".").length === 1;
 };
