@@ -24,6 +24,10 @@ import ksAdditionOld from "./fixtures/drd/ks-addition-old.dmn";
 import ksAdditionNew from "./fixtures/drd/ks-addition-new.dmn";
 import ksModificationOld from "./fixtures/drd/ks-modification-old.dmn";
 import ksModificationNew from "./fixtures/drd/ks-modification-new.dmn";
+import epvOld from "./fixtures/drd/epv-old.dmn";
+import epvNew from "./fixtures/drd/epv-new.dmn";
+import nameAndDescriptionOld from "./fixtures/drd/name-and-description-old.dmn";
+import nameAndDescriptionNew from "./fixtures/drd/name-and-description-new.dmn";
 
 import { computeDiff } from "./helpers";
 
@@ -669,6 +673,60 @@ describe("DRD view", () => {
                   id: "KnowledgeSource_1hmxfnc",
                 },
                 value: "Ks documentation",
+              },
+            ],
+          },
+        },
+      });
+    });
+  });
+
+  describe("Root level attributes", () => {
+    test("should detect changes in root level attributes", async () => {
+      // Execution platform version
+      const result = await computeDiff(epvOld, epvNew);
+      expect(result).toMatchObject({
+        Definitions_0cx0vqk: {
+          changes: {
+            modified: [
+              {
+                location: {
+                  path: "executionPlatformVersion",
+                  id: null,
+                },
+                oldValue: "8.5.0",
+                newValue: "8.7.0",
+              },
+            ],
+          },
+        },
+      });
+
+      // Name & description
+      const result2 = await computeDiff(
+        nameAndDescriptionOld,
+        nameAndDescriptionNew
+      );
+      expect(result2).toMatchObject({
+        Definitions_0cx0vqk: {
+          changes: {
+            added: [
+              {
+                location: {
+                  path: "description",
+                  id: null,
+                },
+                value: "DRD Description",
+              },
+            ],
+            modified: [
+              {
+                location: {
+                  path: "name",
+                  id: null,
+                },
+                oldValue: "DRDD",
+                newValue: "DRD Diagram",
               },
             ],
           },

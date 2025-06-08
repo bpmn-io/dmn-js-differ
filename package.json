@@ -29,10 +29,12 @@
   "author": "Nithin S. Sabu",
   "license": "MIT",
   "devDependencies": {
+    "modeler-moddle": "^0.2.0",
     "npm-run-all2": "^7.0.1",
     "rollup": "^4.24.0",
     "vite-raw-plugin": "^1.0.2",
-    "vitest": "^2.1.2"
+    "vitest": "^2.1.2",
+    "zeebe-dmn-moddle": "^1.0.0"
   },
   "dependencies": {
     "diffpatch": "^0.6.0"
