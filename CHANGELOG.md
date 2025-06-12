@@ -6,4 +6,6 @@ All notable changes to [dmn-js-differ](https://github.com/bpmn-io/dmn-js-differ)
 
 ___Note:__ Yet to be released changes appear here._
 
+* `FEAT`: work on moddle trees instead of XML strings [#2](https://github.com/bpmn-io/dmn-js-differ/issues/2)
+
 * `FEAT`: build initial version
