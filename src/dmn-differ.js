@@ -11,12 +11,12 @@ class DmnDiffer {
   }
 
   /**
-   * Compute the differences between two DMN XMLs.
-   * @param {string} oldXML - The old DMN XML as a string.
-   * @param {string} newXML - The new DMN XML as a string.
-   * @returns {Promise<Object>} - A promise that resolves with the diff object (keys: IDs of DRD elements that changed, values: objects with the type of changes (changeType) and changes list (changes))
+   * Compute the differences between two parsed (using dmn-moddle) DMN XML strings.
+   * @param {Object} oldDefinitions - The old DMN definitions object from dmn-moddle.
+   * @param {Object} newDefinitions - The new DMN definitions object from dmn-moddle.
+   * @returns {Object} - An object with DRD element IDs as keys and values containing the type of changes and a list of changes.
    */
-  async compute(oldDefinitions, newDefinitions) {
+  compute(oldDefinitions, newDefinitions) {
     this._removeDi(oldDefinitions);
     this._removeDi(newDefinitions);
 
