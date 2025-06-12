@@ -7,11 +7,11 @@ export const computeDiff = async (oldXML, newXML) => {
   const newDefinitions = await parseXML(newXML);
 
   const dmnDiffer = new DmnDiffer();
-  return await dmnDiffer.compute(oldDefinitions, newDefinitions);
+  return dmnDiffer.compute(oldDefinitions, newDefinitions);
 };
 
 const parseXML = async (xml) => {
   const moddle = new DmnModdle();
   const { rootElement } = await moddle.fromXML(xml, "dmn:Definitions");
   return rootElement;
-}
+};
