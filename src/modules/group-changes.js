@@ -10,29 +10,37 @@ const _groupChanges = (diff, oldDefinitions, newDefinitions) => {
       const { location } = change;
       const { path } = location;
 
-      const drdElementType = _getDrdElementType(path);
-      const drdElementPath = _extractPathUntilTarget(path, drdElementType);
-      const drdElementId = _getDrdElementId(
-        changeType === "removed" ? oldDefinitions : newDefinitions,
-        drdElementPath
-      );
-
-      if (drdElementId) {
-        // Set changeType
-        _setDrdElementChangeType(
-          grouped,
-          oldDefinitions,
-          newDefinitions,
-          drdElementPath,
-          drdElementId
+      const isRootLevelAttributeChange = path.split(".").length === 1;
+      if (isRootLevelAttributeChange) {
+        const drdId = newDefinitions.id;
+        _ensureNestedProperty(grouped, drdId, "changes", changeType).push(
+          change
         );
-        // Set changes
-        _ensureNestedProperty(
-          grouped,
-          drdElementId,
-          "changes",
-          changeType
-        ).push(change);
+      } else {
+        const drdElementType = _getDrdElementType(path);
+        const drdElementPath = _extractPathUntilTarget(path, drdElementType);
+        const drdElementId = _getDrdElementId(
+          changeType === "removed" ? oldDefinitions : newDefinitions,
+          drdElementPath
+        );
+
+        if (drdElementId) {
+          // Set changeType
+          _setDrdElementChangeType(
+            grouped,
+            oldDefinitions,
+            newDefinitions,
+            drdElementPath,
+            drdElementId
+          );
+          // Set changes
+          _ensureNestedProperty(
+            grouped,
+            drdElementId,
+            "changes",
+            changeType
+          ).push(change);
+        }
       }
     });
   });
