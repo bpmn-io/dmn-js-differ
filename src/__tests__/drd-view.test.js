@@ -14,18 +14,18 @@ import decisionPropertiesOld from "./fixtures/drd/decision-properties-old.dmn";
 import decisionPropertiesNew from "./fixtures/drd/decision-properties-new.dmn";
 import decisionTypeChangeOld from "./fixtures/drd/decision-type-change-old.dmn";
 import decisionTypeChangeNew from "./fixtures/drd/decision-type-change-new.dmn";
-import bkmAdditionOld from "./fixtures/drd/bkm-addition-old.dmn";
-import bkmAdditionNew from "./fixtures/drd/bkm-addition-new.dmn";
-import bkmModificationOld from "./fixtures/drd/bkm-modification-old.dmn";
-import bkmModificationNew from "./fixtures/drd/bkm-modification-new.dmn";
-import bkmTypeChangeOld from "./fixtures/drd/bkm-type-change-old.dmn";
-import bkmTypeChangeNew from "./fixtures/drd/bkm-type-change-new.dmn";
-import ksAdditionOld from "./fixtures/drd/ks-addition-old.dmn";
-import ksAdditionNew from "./fixtures/drd/ks-addition-new.dmn";
-import ksModificationOld from "./fixtures/drd/ks-modification-old.dmn";
-import ksModificationNew from "./fixtures/drd/ks-modification-new.dmn";
-import epvOld from "./fixtures/drd/epv-old.dmn";
-import epvNew from "./fixtures/drd/epv-new.dmn";
+import businessKnowledgeModelAdditionOld from "./fixtures/drd/business-knowledge-model-addition-old.dmn";
+import businessKnowledgeModelAdditionNew from "./fixtures/drd/business-knowledge-model-addition-new.dmn";
+import businessKnowledgeModelModificationOld from "./fixtures/drd/business-knowledge-model-modification-old.dmn";
+import businessKnowledgeModelModificationNew from "./fixtures/drd/business-knowledge-model-modification-new.dmn";
+import businessKnowledgeModelTypeChangeOld from "./fixtures/drd/business-knowledge-model-type-change-old.dmn";
+import businessKnowledgeModelTypeChangeNew from "./fixtures/drd/business-knowledge-model-type-change-new.dmn";
+import knowledgeSourceAdditionOld from "./fixtures/drd/knowledge-source-addition-old.dmn";
+import knowledgeSourceAdditionNew from "./fixtures/drd/knowledge-source-addition-new.dmn";
+import knowledgeSourceModificationOld from "./fixtures/drd/knowledge-source-modification-old.dmn";
+import knowledgeSourceModificationNew from "./fixtures/drd/knowledge-source-modification-new.dmn";
+import executionPlatformVersionOld from "./fixtures/drd/execution-platform-version-old.dmn";
+import executionPlatformVersionNew from "./fixtures/drd/execution-platform-version-new.dmn";
 import nameAndDescriptionOld from "./fixtures/drd/name-and-description-old.dmn";
 import nameAndDescriptionNew from "./fixtures/drd/name-and-description-new.dmn";
 
@@ -412,7 +412,10 @@ describe("DRD view", () => {
 
   describe("Business knowledge model element", () => {
     test("should detect addition", async () => {
-      const result = await computeDiff(bkmAdditionOld, bkmAdditionNew);
+      const result = await computeDiff(
+        businessKnowledgeModelAdditionOld,
+        businessKnowledgeModelAdditionNew
+      );
 
       expect(result).toMatchObject({
         Decision_1loqm2b: {
@@ -457,7 +460,10 @@ describe("DRD view", () => {
     });
 
     test("should detect removal", async () => {
-      const result = await computeDiff(bkmAdditionNew, bkmAdditionOld);
+      const result = await computeDiff(
+        businessKnowledgeModelAdditionNew,
+        businessKnowledgeModelAdditionOld
+      );
 
       expect(result).toMatchObject({
         Decision_1loqm2b: {
@@ -502,7 +508,10 @@ describe("DRD view", () => {
     });
 
     test("should detect modification", async () => {
-      const result = await computeDiff(bkmModificationOld, bkmModificationNew);
+      const result = await computeDiff(
+        businessKnowledgeModelModificationOld,
+        businessKnowledgeModelModificationNew
+      );
 
       expect(result).toMatchObject({
         BusinessKnowledgeModel_0m5x0lw: {
@@ -523,7 +532,10 @@ describe("DRD view", () => {
     });
 
     test("should detect change to literal expression", async () => {
-      const result = await computeDiff(bkmTypeChangeOld, bkmTypeChangeNew);
+      const result = await computeDiff(
+        businessKnowledgeModelTypeChangeOld,
+        businessKnowledgeModelTypeChangeNew
+      );
 
       expect(result).toMatchObject({
         BusinessKnowledgeModel_0m5x0lw: {
@@ -563,7 +575,10 @@ describe("DRD view", () => {
 
   describe("Knowledge source element", () => {
     test("should detect addition", async () => {
-      const result = await computeDiff(ksAdditionOld, ksAdditionNew);
+      const result = await computeDiff(
+        knowledgeSourceAdditionOld,
+        knowledgeSourceAdditionNew
+      );
 
       expect(result).toMatchObject({
         Decision_1loqm2b: {
@@ -608,7 +623,10 @@ describe("DRD view", () => {
     });
 
     test("should detect removal", async () => {
-      const result = await computeDiff(ksAdditionNew, ksAdditionOld);
+      const result = await computeDiff(
+        knowledgeSourceAdditionNew,
+        knowledgeSourceAdditionOld
+      );
 
       expect(result).toMatchObject({
         Decision_1loqm2b: {
@@ -653,7 +671,10 @@ describe("DRD view", () => {
     });
 
     test("should detect modification", async () => {
-      const result = await computeDiff(ksModificationOld, ksModificationNew);
+      const result = await computeDiff(
+        knowledgeSourceModificationOld,
+        knowledgeSourceModificationNew
+      );
 
       expect(result).toMatchObject({
         KnowledgeSource_1hmxfnc: {
@@ -684,7 +705,10 @@ describe("DRD view", () => {
   describe("Root level attributes", () => {
     test("should detect changes in root level attributes", async () => {
       // Execution platform version
-      const result = await computeDiff(epvOld, epvNew);
+      const result = await computeDiff(
+        executionPlatformVersionOld,
+        executionPlatformVersionNew
+      );
       expect(result).toMatchObject({
         Definitions_0cx0vqk: {
           changes: {
