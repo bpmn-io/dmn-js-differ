@@ -11,7 +11,7 @@ class DmnDiffer {
   }
 
   /**
-   * Compute the differences between two parsed (using dmn-moddle) DMN XML strings.
+   * Compute the differences between two DMN definitions, parsed using dmn-moddle.
    * @param {Object} oldDefinitions - The old DMN definitions object from dmn-moddle.
    * @param {Object} newDefinitions - The new DMN definitions object from dmn-moddle.
    * @returns {Object} - An object with DRD element IDs as keys and values containing the type of changes and a list of changes.
