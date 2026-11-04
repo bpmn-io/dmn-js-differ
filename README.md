@@ -6,11 +6,19 @@ A semantic diffing utility for DMN 1.3 documents.
 
 ## Usage
 
+Parse both DMN documents using [dmn-moddle](https://github.com/bpmn-io/dmn-moddle), then compute the diff between the resulting definitions:
+
 ```js
+import DmnModdle from "dmn-moddle";
 import DmnDiffer from "dmn-js-differ";
 
+const moddle = new DmnModdle();
+
+const { rootElement: oldDefinitions } = await moddle.fromXML(oldXml);
+const { rootElement: newDefinitions } = await moddle.fromXML(newXml);
+
 const dmnDiffer = new DmnDiffer();
-const diff = await dmnDiffer.compute(oldXml, newXml); // oldXml & newXml are the DMN XML strings
+const diff = dmnDiffer.compute(oldDefinitions, newDefinitions);
 ```
 
 The diff returns an object.
