@@ -21,8 +21,6 @@ const dmnDiffer = new DmnDiffer();
 const diff = dmnDiffer.compute(oldDefinitions, newDefinitions);
 ```
 
-Parsing is asynchronous, computing the diff is synchronous.
-
 The diff returns an object.
 
 - The keys are the IDs of elements shown in the DRD view that changed.
